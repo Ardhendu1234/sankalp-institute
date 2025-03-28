@@ -1,14 +1,52 @@
-function Footer() {
-    return (
-      <footer className="glass text-white p-8 text-center mt-16">
-        <div className="flex justify-center space-x-6 mb-4 flex-wrap">
-          <a href="#" className="text-yellow-400 hover:text-yellow-300 transition duration-300">Instagram</a>
-          <a href="#" className="text-yellow-400 hover:text-yellow-300 transition duration-300">YouTube</a>
-          <a href="#" className="text-yellow-400 hover:text-yellow-300 transition duration-300">LinkedIn</a>
-        </div>
-        <p className="text-gray-200 dark:text-gray-400">© 2025 Sankalp Institute | Designed by [Your Name]</p>
-      </footer>
-    );
+import styled from 'styled-components';
+
+const FooterContainer = styled.footer`
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
-  
-  export default Footer;
+`;
+
+const SocialLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+`;
+
+const SocialLink = styled.a`
+  color: #facc15;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #f4d03f;
+  }
+`;
+
+const Copyright = styled.p`
+  color: #d1d5db;
+`;
+
+function Footer() {
+  return (
+    <FooterContainer>
+      <SocialLinks>
+        <SocialLink href="#">Instagram</SocialLink>
+        <SocialLink href="#">YouTube</SocialLink>
+        <SocialLink href="#">LinkedIn</SocialLink>
+      </SocialLinks>
+      <Copyright>© 2025 Sankalp Institute | Designed by Ardhendu</Copyright>
+    </FooterContainer>
+  );
+}
+
+export default Footer;

@@ -1,18 +1,31 @@
 import { FaSun, FaMoon } from 'react-icons/fa';
+import styled from 'styled-components';
+
+const ToggleButton = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: #e5e7eb;
+  color: #1f2937;
+  transition: background 0.3s ease, color 0.3s ease;
+
+  &[data-theme="dark"] {
+    background: #4b5563;
+    color: #e5e7eb;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+`;
 
 function ThemeToggle({ toggleTheme, theme }) {
   return (
-    <button
-      onClick={toggleTheme}
-      className="flex items-center p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition duration-300"
-      aria-label="Toggle theme"
-    >
-      {theme === 'light' ? (
-        <FaMoon className="w-5 h-5" />
-      ) : (
-        <FaSun className="w-5 h-5" />
-      )}
-    </button>
+    <ToggleButton onClick={toggleTheme} data-theme={theme} aria-label="Toggle theme">
+      {theme === 'light' ? <FaMoon /> : <FaSun />}
+    </ToggleButton>
   );
 }
 

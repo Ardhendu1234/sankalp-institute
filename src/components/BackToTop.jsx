@@ -1,5 +1,24 @@
 import { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
+import styled from 'styled-components';
+
+const BackToTopButton = styled.button`
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #facc15;
+  color: #1f2937;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  opacity: ${props => (props.isVisible ? 1 : 0)};
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+`;
 
 function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,12 +32,12 @@ function BackToTop() {
   }, []);
 
   return (
-    <button
+    <BackToTopButton
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className={`fixed bottom-6 right-6 bg-yellow-400 text-gray-800 p-3 rounded-full shadow-lg transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      isVisible={isVisible}
     >
       <FaArrowUp />
-    </button>
+    </BackToTopButton>
   );
 }
 
